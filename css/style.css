@@ -1,0 +1,378 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+img{
+	pointer-events: none;
+}
+:root {
+	--index: calc(1vw + 1vh);
+	--gutter: 30px;
+	--side-small: 26;
+	--side-big: 36;
+	--depth: 3900px;
+	--transition: .75s cubic-bezier(.075, .5, 0, 1)
+}
+
+/* Скрываем Scrollbar */
+body {
+	scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar { 
+	display: none; /* Safari and Chrome */
+}
+
+@font-face {
+	font-family: raleway_c;
+	src: url(../fonts/raleway-v22-cyrillic-300.woff2);
+	font-weight: 300;
+}
+@font-face {
+	font-family: raleway_c;
+	src: url(../fonts/raleway-v22-cyrillic-100.woff2);
+	font-weight: 100;
+}
+body {
+	background-color: rgb(0, 0, 0);
+	color: #fff;
+	font-size: calc(var(--index) * .8);
+	font-family: raleway_c, sans-serif;
+	line-height: 1.75;
+	height: var(--depth);
+	font-weight: 300;
+}
+.main{
+	
+}
+.container {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	perspective: 2000px;
+	animation-name: intro_1;
+	animation-duration: 3s;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+}
+.gallery {
+	transform-style: preserve-3d;
+	height: 100%;
+}
+.animate_mouse{
+}
+
+
+@keyframes intro_1 {
+	from{
+		perspective: 1000px;
+	}
+	50%{
+		perspective: 1000px;
+	}
+	to{
+		perspective: 2000px;
+	}
+}
+
+
+.frame {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: var(--transition), opacity .75s ease;
+	will-change: transform;
+	transform-style: preserve-3d;
+}
+.frame_text{
+	position: relative;
+	width: calc(var(--index) * var(--side-big));
+	height: calc(var(--index) * var(--side-big));
+	background-position: center;
+	background-size: cover;
+}
+h1, h2, h3 {
+	font-weight: 100;
+	text-transform: uppercase;
+	width: min-content;
+	line-height: 1;
+}
+h4{
+	font-weight: 100;
+	text-transform: uppercase;
+	line-height: 2;
+}
+.frame h2 {
+	text-align: center;
+	font-size: calc(var(--index) * 3.3);
+}
+.frame-media {
+	position: relative;
+	width: calc(var(--index) * var(--side-small));
+	height: calc(var(--index) * var(--side-big));
+	background-position: center;
+	background-size: cover;
+}
+.frame-media_left {
+	right: calc(var(--side-small) / 2 * var(--index) + var(--gutter));
+}
+.frame-media_right {
+	left: calc(var(--side-small) / 2 * var(--index) + var(--gutter));
+}
+.frame_bg {
+	background-color: rgb(0 0 0 / .87);
+	width: 100%;
+}
+video.frame-media {
+	width: calc(var(--index) * var(--side-big));
+	height: calc(var(--index) * var(--side-small));
+}
+.video.frame-media_hor{
+	width: calc(var(--index) * var(--side-small));
+	height: calc(var(--index) * var(--side-big));
+}
+video.frame-media_right {
+	left: calc(var(--side-big) / 2 * var(--index) + var(--gutter));
+}
+video.frame-media_left {
+	right: calc(var(--side-big) / 2 * var(--index) + var(--gutter));
+}
+.text-right > * {
+	position: relative;
+	left: 18vw;
+}
+.text-left > * {
+	position: relative;
+	right: 18vw;
+}
+.frame h3 {
+	font-size: calc(var(--index) * 3);
+}
+.frame p {
+	max-width: 30vw;
+	margin-top: 3vh;
+}
+
+
+
+@keyframes animations_bg {
+	0%{
+	transform: translateY(-100%);
+	opacity: 0;
+	}
+	100%{
+		transform: translateY(0%);
+	opacity: 1;
+
+	}
+}
+
+@keyframes animations_bg_out {
+	from{
+		transform: translateY(0%);
+		opacity: 1;
+	}
+	to{
+		transform: translateY(-100%);
+		opacity: 0;
+
+	}
+}
+
+
+.blur{
+	visibility:hidden;
+	transition: transform .2s ease;
+	animation-name: animations_bg_out;
+	animation-duration: .3s;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+	transform: translateY(-100%);
+	opacity: 0;
+}
+
+
+.none_blur{
+	transition: none;
+	animation-name: animations_bg;
+	animation-duration: .5s;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+}
+.burder_main_container{
+	background: rgba(0, 0, 0, 0.961);
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	transition: .3s ease;
+	/* animation-name: animations_bg;
+	animation-duration: .3s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards; */
+}
+
+.none{
+	display: none;
+	transition: 2s ease;
+}
+
+
+
+
+
+
+
+
+
+.main_info{
+	display: flex;
+	width: 1000px;
+	margin: 0 auto;
+	justify-content: space-around;
+	align-items: flex-start;
+}
+
+.group{
+	min-width: none;
+	text-align: center;
+}
+.group h2{
+	width: max-content;
+	text-align: center;
+	font-size: 19px;
+	font-weight: 500;
+	padding-bottom: 25px;
+	color: #636363;
+	text-transform: uppercase;
+}
+
+.group li{
+	list-style: none;
+	padding-bottom: 7px;
+	text-align: left;
+}
+
+.group li a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 300;
+	font-feature-settings: 'lnum' 1;
+}
+
+.group li a:hover{
+	text-decoration: underline;
+}
+
+.social img{
+	-webkit-filter: invert(100%);
+  	filter: invert(100%);
+	width: 32px;
+	height: 32px;
+	transition: .2s ease-in-out;
+}
+
+.social img:hover{
+	filter: invert(80%);
+
+}
+.social{
+	display: flex;
+	justify-content: space-around;
+	margin: 0 40px;
+}
+.block_menu{
+	cursor: pointer;
+    position: fixed;
+	top: 27px;
+	right: 40px;
+	cursor: pointer;
+	width: 60px;
+	height: 50px;
+	transition: .25s ease;
+	background: none;
+	border: none;
+}
+
+.menu_1{
+    position: fixed;
+	top: 40px;
+	right: 50px;
+	cursor: pointer;
+	width: 40px;
+	height: 2px;
+    background: rgba(255, 255, 255, 0.712);
+	transition: .25s ease;
+}
+
+.menu_2{
+    content: "";
+    position: fixed;
+	top: 50px;
+	right: 50px;
+	width: 40px;
+	height: 2px ;
+	background: rgba(255, 255, 255, 0.712);
+	transition: .25s ease;
+}
+
+.menu_3{
+    content: "";
+    position: fixed;
+	top: 60px;
+	right: 50px;
+	cursor: pointer;
+	width: 40px;
+	height: 2px ;
+    background: rgba(255, 255, 255, 0.712);
+	transition: .25s ease;
+}
+
+/* при наведении */
+.block_menu:hover .menu_1{
+	transform: translateY(-1px);
+    background: #fff;
+}
+.block_menu:hover .menu_3{
+	transform: translateY(1px);
+    background: #fff;
+}
+.block_menu:hover .menu_2{
+	background: #fff;
+}
+
+/* при нажатии */
+.block_menu.active .menu_1{
+    transform:  translate3d(0px, 10px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(45deg) skew(0deg, 0deg);
+    background: #fff;
+}
+.block_menu.active .menu_2{
+    transform:  translate3d(0px, 0px, 0px) scale3d(0, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    background: #fff;
+}
+.block_menu.active .menu_3{
+    transform:	translate3d(0px, -10px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-45deg) skew(0deg, 0deg); transform-style: preserve-3d;;
+    background: #fff;
+}
+
+
+/* заметки на следющий день
+	сделать кнопки и бургер до конца
+	подумать над идеей бургера
+	подумать над контентом и переходом на страницы 
+	подумать над начальной анимацией сайта
+
+
+
+
+
+
+*/
+
+
+
