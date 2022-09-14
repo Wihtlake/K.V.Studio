@@ -6,6 +6,10 @@
 img{
 	pointer-events: none;
 }
+video{
+	pointer-events: none;
+
+}
 :root {
 	--index: calc(1vw + 1vh);
 	--gutter: 30px;
